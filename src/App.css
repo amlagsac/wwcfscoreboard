@@ -1,0 +1,36 @@
+@font-face {
+    font-family: digital-7;
+    src: url('./fonts/Digital-7/digital-7.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: Premier2019;
+    src: url('./fonts/Premier2019/Premier2019-rPv9.ttf') format('trutype');
+}
+
+body {
+    font-family: "digital-7";
+    background-size: cover;
+    margin: 0;
+
+}
+
+.button-arrow {
+    margin: 0 auto;
+    top: 0%;
+    position: relative;  
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 2.5em 0 2.5em 5em;
+    border-color: transparent transparent transparent #000;
+    opacity: .75; 
+  }
+
+.left {
+    transform: rotate(180deg);
+}
+
+.red {
+    border-color: #EE4B2B;
+}
