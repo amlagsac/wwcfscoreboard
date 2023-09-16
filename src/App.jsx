@@ -120,7 +120,7 @@ const App = () => {
       clearInterval(timer);
     }
     return () => clearInterval(timer);
-  }, [gameClockPause, minutes, seconds, shotClockSeconds, longBuzzer])
+  }, [gameClockPause, minutes, seconds, shotClockSeconds, longBuzzer, shotClockBuzzer])
 
   const lightTimeoutDecrement = (e) => {
     setTimeoutLight((prev) => {
