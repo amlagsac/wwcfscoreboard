@@ -19,8 +19,9 @@ import './App.css';
 
 const App = () => {
 
-  const shortBuzzer = new Audio("/sounds/Basketball Indoors Buzzer Sound Sound Effects Sound Effect Sounds EFX Sfx FX Sports Basketball.mp3");
-  const longBuzzer = new Audio("/sounds/Long Lasting Basketball Buzzer.mp3");
+  const shortBuzzer = new Audio("/sounds/SubBuzzer.mp3");
+  const shotClockBuzzer = new Audio("/sounds/ShotClock.mp3");
+  const longBuzzer = new Audio("/sounds/LongBuzzerSound.mp3");
 
   const [minutes, setMinutes] = useState(10);
   const [seconds, setSeconds] = useState(0);
@@ -30,7 +31,11 @@ const App = () => {
   const [darkScore, setDarkScore] = useState(0);
   const [timeoutLight, setTimeoutLight] = useState(5);
   const [timeoutDark, setTimeoutDark] = useState(5);
+  const [foulLight, setFoulLight] = useState(0);
+  const [foulDark, setFoulDark] = useState(0);
   const [possession, setPossession] = useState("");
+  const [quarter, setQuarter] = useState(1);
+  const [changeCourt, setChangeCourt] = useState(false);
 
   useEffect(() => {
     localStorage.setItem('minutes', JSON.stringify(minutes));
@@ -41,7 +46,22 @@ const App = () => {
     localStorage.setItem('possession', JSON.stringify(possession));
     localStorage.setItem('timeoutLight', JSON.stringify(timeoutLight));
     localStorage.setItem('timeoutDark', JSON.stringify(timeoutDark));
-  },[minutes, seconds, shotClockSeconds, lightScore, darkScore, possession, timeoutLight, timeoutDark])
+    localStorage.setItem('foulLight', JSON.stringify(foulLight));
+    localStorage.setItem('foulDark', JSON.stringify(foulDark));
+    localStorage.setItem('quarter', JSON.stringify(quarter));
+    localStorage.setItem('changeCourt', JSON.stringify(changeCourt));
+  },[minutes, seconds, shotClockSeconds, lightScore, darkScore, possession, timeoutLight, timeoutDark, foulLight, foulDark, quarter, changeCourt])
+
+  const handleChangeCourt = () => {
+    setChangeCourt(prev => {
+      if(prev !== false) {
+        return false;
+      }
+      else {
+        return true;
+      }
+    });
+  }
 
   const handleGameClockPauseToggle = () => {
     setGameClockPause(false);
@@ -71,6 +91,9 @@ const App = () => {
     if(gameClockPause && (minutes > 0 || seconds > 0 || shotClockSeconds > 0)) {
        timer = setInterval(() => {
         if (shotClockSeconds !== 0) {
+          if(shotClockSeconds === 1) {
+            shotClockBuzzer.play();
+          }
           if (seconds === 0) {
             if (minutes === 0) {
               setGameClockPause(false);
@@ -89,7 +112,6 @@ const App = () => {
         else {
           setGameClockPause(false);
           clearInterval(timer);
-          longBuzzer.play();
           return;
         }
       }, 1000)
@@ -119,6 +141,17 @@ const App = () => {
       else
         return 0;
     });
+  }
+
+  const lightFoulIncrement = (e) => {
+    setFoulLight((prev) => {
+      return prev += 1;
+      })
+  }
+  const darkFoulIncrement = (e) => {
+    setFoulDark((prev) => {
+      return prev += 1;
+      })
   }
 
   const plusOnePointLight = () => {
@@ -229,8 +262,52 @@ const App = () => {
     })
   }
 
+  const resetLightFoul = (e) => {
+    setFoulLight((prev) => {
+      if (prev === 0) {
+        return prev;
+      }
+      else 
+        return 0;
+    })
+  }
+
+  const resetDarkFoul = (e) => {
+    setFoulDark((prev) => {
+      if (prev === 0) {
+        return prev;
+      }
+      else 
+        return 0;
+    })
+  }
+
+  const changeQuarter = (e) => {
+    if(e.target.value >= 1 && e.target.value <= 5) {
+      setQuarter(e.target.value)
+    }
+  }
+
   const handlePossessionChange = (event) => {
     setPossession(event.target.value);
+  }
+
+  const changeMinutes = (e) => {
+    if(e.target.value >= 0 && e.target.value <= 10) {
+      setMinutes(e.target.value)
+    }
+  }
+
+  const changeSeconds = (e) => {
+    if(e.target.value >= 0 && e.target.value <= 59) {
+      setSeconds(e.target.value)
+    }
+  }
+
+  const changeShotClock = (e) => {
+    if(e.target.value >= 1 && e.target.value <= 24) {
+      setShotClockSeconds(e.target.value)
+    }
   }
 
   return (
@@ -243,8 +320,8 @@ const App = () => {
           <Box sx={{ width: 469.328, height: 300, display: "flex", border: "solid", borderRadius: 3, ml: 1.5}}>
             <Container fixed>
               <h2 style={{ fontSize: "1.75rem" }}>Game Clock Setting</h2>
-              <TextField label='Minutes' value={minutes} type="number" sx={{ width: 75, marginRight: 1 }}></TextField>
-              <TextField label='Seconds' value={seconds} type="number" sx={{ width: 75, marginRight: 1}}></TextField>
+              <TextField label='Minutes' value={minutes} type="number" sx={{ width: 75, marginRight: 1 }} onChange={changeMinutes}></TextField>
+              <TextField label='Seconds' value={seconds} type="number" sx={{ width: 75, marginRight: 1}} onChange={changeSeconds}></TextField>
               <IconButton size="large" sx={{ marginTop: -.1, marginLeft: -1 }} onClick={handleGameClockPlayToggle}>
                 <PlayCircleOutlineIcon fontSize="inherit" />
               </IconButton>
@@ -255,7 +332,7 @@ const App = () => {
                 <RestartAltIcon fontSize="inherit"></RestartAltIcon>
               </IconButton>
               <h2 style={{ fontSize: "1.75rem" }}>Shot Clock Setting</h2>
-              <TextField label='Seconds' value={shotClockSeconds} type="number" sx={{ width: 75, marginRight: 1}}></TextField>
+              <TextField label='Seconds' value={shotClockSeconds} type="number" sx={{ width: 75, marginRight: 1}} onChange={changeShotClock}></TextField>
               <IconButton size="large" sx={{ marginTop: -.1, marginLeft: -1 }} onClick={handleShotClockHalfReset}>
                 <HourglassBottomOutlinedIcon fontSize="inherit" />
               </IconButton>
@@ -272,8 +349,8 @@ const App = () => {
               <Divider style={{ width:'100%', marginBottom: "1rem"}}></Divider>
               <Container sx={{ display: "flex", justifyContent: "center"}} >
                 <h3 style={{ fontSize: "1.25rem", marginRight: ".5rem" }}>Light</h3>
-                <TextField fullWidth value={lightScore} type="number" inputProps={{ style: { textAlign: "center" }}} sx={{ marginRight: 1 }}></TextField>
-                <TextField fullWidth value={darkScore} type="number" inputProps={{ style: { textAlign: "center" }}} sx={{ marginRight: 1}}></TextField>
+                <TextField fullWidth disabled value={lightScore} type="number" inputProps={{ style: { textAlign: "center" }}} sx={{ marginRight: 1 }}></TextField>
+                <TextField fullWidth disabled value={darkScore} type="number" inputProps={{ style: { textAlign: "center" }}} sx={{ marginRight: 1}}></TextField>
                 <h3 style={{ fontSize: "1.25rem", marginRight: ".5rem" }}>Dark</h3>
               </Container>
               <ButtonGroup color="success" variant="outlined" aria-label="outlined button group" sx={{ marginTop: 2}}>
@@ -297,7 +374,7 @@ const App = () => {
                 <Button onClick={minusThreePointDark}>-<Looks3Icon/></Button>
               </ButtonGroup>
               <Box sx={{ textAlign: "center" }}>
-                <Button size="small" variant="outlined" sx={{ marginTop: 1}}>Change Court</Button>
+                <Button value={changeCourt} onClick={handleChangeCourt} size="small" variant="outlined" sx={{ marginTop: 1}}>Change Court</Button>
               </Box>
             </Container>
           </Box>
@@ -338,6 +415,33 @@ const App = () => {
                 <IconButton size="large" onClick={() => { shortBuzzer.play() }}>
                   <NotificationsActiveOutlinedIcon sx={{ fontSize: "inherit" }}/>
                 </IconButton>
+              </Box>
+            </Container>
+          </Box>
+        </Grid>
+        <Grid item lg={4} md={6} xs={12}>
+        <Box sx={{ width: 469.328, height: 300, display: "flex", border: "solid", borderRadius: 3 }}>
+            <Container fixed>
+              <h2 style={{ fontSize: "1.75rem" }}>Team Foul and Quarter Setting</h2>
+              <Divider style={{ width:'100%', marginBottom: "1rem"}}></Divider>
+              <Container sx={{ display: "flex", justifyContent: "center"}} >
+                <h3 style={{ fontSize: "1.25rem", marginRight: ".5rem" }}>Light</h3>
+                <TextField disabled fullWidth value={foulLight} type="number" inputProps={{ style: { textAlign: "center" }}} sx={{ marginRight: 1 }}></TextField>
+                <TextField disabled fullWidth value={foulDark} type="number" inputProps={{ style: { textAlign: "center" }}} sx={{ marginRight: 1}}></TextField>
+                <h3 style={{ fontSize: "1.25rem", marginRight: ".5rem" }}>Dark</h3>
+              </Container>
+              <Button size="small" variant="outlined" onClick={lightFoulIncrement}>Foul Light</Button>
+              <IconButton size="large" sx={{ marginLeft: -.2 }} onClick={resetLightFoul}>
+                <RestartAltIcon fontSize="inherit"></RestartAltIcon>
+              </IconButton>
+              <IconButton size="large" sx={{ marginLeft: 15.2 }} onClick={resetDarkFoul}>
+                <RestartAltIcon fontSize="inherit"></RestartAltIcon>
+              </IconButton>
+              <Button size="small" variant="contained" sx={{ marginRight: 0 }} onClick={darkFoulIncrement} >Foul Dark</Button>
+              <Divider style={{ width:'100%', marginTop: ".5rem"}}></Divider>
+              <Box sx={{ marginTop: 2, display: "flex" }}>
+                <h2 style={{ fontSize: "1.25 rem", height: '50%', marginRight: "5px" }}>Game Quarter</h2>
+                <TextField label='Quarter' onChange={changeQuarter} value={quarter} type="number" sx={{ width: 75, marginRight: 1 }}></TextField>
               </Box>
             </Container>
           </Box>
