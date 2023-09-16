@@ -20,7 +20,6 @@ import './App.css';
 const App = () => {
 
   const shortBuzzer = new Audio("/sounds/SubBuzzer.mp3");
-  const shotClockBuzzer = new Audio("/sounds/ShotClock.mp3");
   const longBuzzer = new Audio("/sounds/LongBuzzerSound.mp3");
 
   const [minutes, setMinutes] = useState(10);
@@ -88,6 +87,8 @@ const App = () => {
 
   useEffect(() => {
     let timer;
+    const shotClockBuzzer = new Audio("/sounds/ShotClock.mp3");
+    const longBuzzer = new Audio("/sounds/LongBuzzerSound.mp3");
     if(gameClockPause && (minutes > 0 || seconds > 0 || shotClockSeconds > 0)) {
        timer = setInterval(() => {
         if (shotClockSeconds !== 0) {
@@ -120,7 +121,7 @@ const App = () => {
       clearInterval(timer);
     }
     return () => clearInterval(timer);
-  }, [gameClockPause, minutes, seconds, shotClockSeconds, longBuzzer, shotClockBuzzer])
+  }, [gameClockPause, minutes, seconds, shotClockSeconds])
 
   const lightTimeoutDecrement = (e) => {
     setTimeoutLight((prev) => {
