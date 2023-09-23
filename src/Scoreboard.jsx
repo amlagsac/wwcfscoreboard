@@ -1,5 +1,9 @@
-import { Box, Container, Grid, Typography, Paper, Divider } from "@mui/material";
+import { Box, Container, Grid, Typography, Paper, Divider, ThemeProvider } from "@mui/material";
+import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 import { useEffect, useState } from "react";
+
+let theme = createTheme();
+theme = responsiveFontSizes(theme);
 
 const Scoreboard = () => {
     const [minutes, setMinutes] = useState(0);
@@ -48,6 +52,7 @@ const Scoreboard = () => {
 
     return(
         <>
+        <ThemeProvider theme={theme}>
           <Container disableGutters maxWidth="false" sx={{ p: 0 }}>
             <Paper square elevation={6} sx={{ height: 'inherit', minHeight: "100vh", backgroundColor: '#242525'}}>
               <Grid container>
@@ -129,7 +134,7 @@ const Scoreboard = () => {
                 <Box textAlign="center">
                     <Typography variant="h3" sx={{ color: "#FFFFFF", fontWeight: 600}}>PERIOD</Typography>
                     <Box sx={{ mx: "auto", display: "flex", justifyContent: "center" }}>
-                    <Typography paragraph={true} className="red_shadow" variant="h4" sx={{backgroundColor: "#000000", fontFamily: "digital-7", color: "#FFA500", fontSize: { xs: "3.5rem", sm: "4.5rem", md: "5.5rem", lg: "6.5rem", xl: "7.5rem" }, px: 6, border: 1, borderColor: "white", borderWidth: 1, borderRadius: 2, textAlign: "center", display: "flex", alignItems: "center" }}>{quarter === "5" ? "OT" : quarter}</Typography>
+                    <Typography paragraph={true} className="red_shadow" variant="h1" sx={{backgroundColor: "#000000", fontFamily: "digital-7", color: "#FFA500", fontSize: { xs: "3.5rem", sm: "4.5rem", md: "5.5rem", lg: "6.5rem", xl: "7.5rem" }, px: 6, border: 1, borderColor: "white", borderWidth: 1, borderRadius: 2, textAlign: "center", display: "flex", alignItems: "center" }}>{quarter === "5" ? "OT" : quarter}</Typography>
                     </Box>
                   </Box>
                 </Grid>
@@ -137,7 +142,7 @@ const Scoreboard = () => {
                 <Box textAlign="center">
                     <Typography variant="h3" sx={{ color: "#FFFFFF", fontWeight: 600}}>FOULS</Typography>
                     <Box sx={{ mx: "auto", display: "flex", justifyContent: "center" }}>
-                      <Typography paragraph className="red_shadow" variant="h4" sx={{backgroundColor: "#000000", height: "inherit", fontFamily: "digital-7", color: "red", fontSize: { xs: "3.5rem", sm: "4.5rem", md: "5.5rem", lg: "6.5rem", xl: "7.5rem" }, px: 2.5, border: 1, borderColor: "white", borderWidth: 1, borderRadius: 2, textAlign: "center", display: "flex", alignItems: "center" }}>{changeCourt ? (foulLight < 5 ? foulLight : "P")  : (foulDark < 5 ? foulDark : "P")}</Typography>
+                      <Typography paragraph className="red_shadow" variant="h1" sx={{backgroundColor: "#000000", height: "inherit", fontFamily: "digital-7", color: "red", fontSize: { xs: "3.5rem", sm: "4.5rem", md: "5.5rem", lg: "6.5rem", xl: "7.5rem" }, px: 2.5, border: 1, borderColor: "white", borderWidth: 1, borderRadius: 2, textAlign: "center", display: "flex", alignItems: "center" }}>{changeCourt ? (foulLight < 5 ? foulLight : "P")  : (foulDark < 5 ? foulDark : "P")}</Typography>
                     </Box>
                   </Box>
                 </Grid>
@@ -145,13 +150,14 @@ const Scoreboard = () => {
                 <Box textAlign="center">
                     <Typography variant="h3" sx={{ color: "#FFFFFF", fontWeight: 600}}>TOL</Typography>
                     <Box sx={{ mx: "auto", display: "flex", justifyContent: "center" }}>
-                      <Typography className="red_shadow" variant="h4" sx={{backgroundColor: "#000000", height: "100%", fontFamily: "digital-7-mono", color: "red", fontSize: { xs: "2rem", sm: "3rem", md: "4.5rem", lg: "6rem", xl: "7.5rem" }, px: 2.5, border: 1, borderColor: "white", borderWidth: 1, borderRadius: 2, display: "flex", alignItems: "center" }}>{changeCourt ? timeoutLight : timeoutDark}</Typography>
+                      <Typography className="red_shadow" variant="h1" sx={{backgroundColor: "#000000", height: "100%", fontFamily: "digital-7-mono", color: "red", fontSize: "7.5rem", px: 2.5, border: 1, borderColor: "white", borderWidth: 1, borderRadius: 2, display: "flex", alignItems: "center" }}>{changeCourt ? timeoutLight : timeoutDark}</Typography>
                     </Box>
                   </Box>
                 </Grid>
               </Grid>
             </Paper>
           </Container>
+          </ThemeProvider>
         </>
     );
 }
