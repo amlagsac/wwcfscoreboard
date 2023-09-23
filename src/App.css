@@ -4,6 +4,11 @@
 }
 
 @font-face {
+    font-family: digital-7-mono;
+    src: url('./fonts/Digital-7/digital-7\ \(mono\).ttf') format('truetype');
+}
+
+@font-face {
     font-family: Premier2019;
     src: url('./fonts/Premier2019/Premier2019-rPv9.ttf') format('trutype');
 }

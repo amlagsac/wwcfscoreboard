@@ -105,7 +105,7 @@ const Scoreboard = () => {
                   <Box textAlign="center">
                     <Typography variant="h2" sx={{ color: "#FFFFFF", fontWeight: 900}}>{changeCourt ? "LIGHT" : "DARK"}</Typography>
                     <Box sx={{ mx: "auto", display: "flex", justifyContent: "center" }}>
-                      <Typography className="green_shadow" variant="h1" sx={{backgroundColor: "#000000", fontFamily: "digital-7", color: "#2CE71E", fontSize: { xs: "8.5rem", sm: "9.5rem", md: "10.5rem", md: "10.5rem", lg: "11.5rem", xl: "12.5rem" }, px: 3.5, border: 1, borderColor: "white", borderWidth: 1, borderRadius: 2, display: "flex", alignItems: "center" }}>{changeCourt ? (lightScore <= 9 ? "0" : "") + lightScore : (darkScore <= 9 ? "0" : "") + darkScore}</Typography>
+                      <Typography className="green_shadow" variant="h1" sx={{backgroundColor: "#000000", fontFamily: "digital-7", color: "#2CE71E", fontSize: { xs: "8.5rem", sm: "9.5rem", md: "10.5rem", lg: "11.5rem", xl: "12.5rem" }, px: 3.5, border: 1, borderColor: "white", borderWidth: 1, borderRadius: 2, display: "flex", alignItems: "center" }}>{changeCourt ? (lightScore <= 9 ? "0" : "") + lightScore : (darkScore <= 9 ? "0" : "") + darkScore}</Typography>
                     </Box>
                   </Box>
                 </Grid>
@@ -129,7 +129,7 @@ const Scoreboard = () => {
                 <Box textAlign="center">
                     <Typography variant="h3" sx={{ color: "#FFFFFF", fontWeight: 600}}>PERIOD</Typography>
                     <Box sx={{ mx: "auto", display: "flex", justifyContent: "center" }}>
-                    <Typography className="red_shadow" variant="h1" sx={{backgroundColor: "#000000", fontFamily: "digital-7", color: "#FFA500", fontSize: { xs: "3.5rem", sm: "4.5rem", md: "5.5rem", lg: "6.5rem", xl: "7.5rem" }, px: 6, border: 1, borderColor: "white", borderWidth: 1, borderRadius: 2, textAlign: "center", display: "flex", alignItems: "center" }}>{quarter === "5" ? "OT" : quarter}</Typography>
+                    <Typography paragraph={true} className="red_shadow" variant="h1" sx={{backgroundColor: "#000000", fontFamily: "digital-7", color: "#FFA500", fontSize: { xs: "3.5rem", sm: "4.5rem", md: "5.5rem", lg: "6.5rem", xl: "7.5rem" }, px: 6, border: 1, borderColor: "white", borderWidth: 1, borderRadius: 2, textAlign: "center", display: "flex", alignItems: "center" }}>{quarter === "5" ? "OT" : quarter}</Typography>
                     </Box>
                   </Box>
                 </Grid>
@@ -137,15 +137,15 @@ const Scoreboard = () => {
                 <Box textAlign="center">
                     <Typography variant="h3" sx={{ color: "#FFFFFF", fontWeight: 600}}>FOULS</Typography>
                     <Box sx={{ mx: "auto", display: "flex", justifyContent: "center" }}>
-                      <Typography className="red_shadow" variant="h1" sx={{backgroundColor: "#000000", height: "inherit", fontFamily: "digital-7", color: "red", fontSize: { xs: "3.5rem", sm: "4.5rem", md: "5.5rem", lg: "6.5rem", xl: "7.5rem" }, px: 2.5, border: 1, borderColor: "white", borderWidth: 1, borderRadius: 2, textAlign: "center", display: "flex", alignItems: "center" }}>{changeCourt ? (foulLight < 5 ? foulLight : "P")  : (foulDark < 5 ? foulDark : "P")}</Typography>
+                      <Typography paragraph className="red_shadow" variant="h1" sx={{backgroundColor: "#000000", height: "inherit", fontFamily: "digital-7", color: "red", fontSize: { xs: "3.5rem", sm: "4.5rem", md: "5.5rem", lg: "6.5rem", xl: "7.5rem" }, px: 2.5, border: 1, borderColor: "white", borderWidth: 1, borderRadius: 2, textAlign: "center", display: "flex", alignItems: "center" }}>{changeCourt ? (foulLight < 5 ? foulLight : "P")  : (foulDark < 5 ? foulDark : "P")}</Typography>
                     </Box>
                   </Box>
                 </Grid>
                 <Grid item xl={2.4} lg={2.4} md={6} sm={6} xs={6} sx={{ mt: 4 }}>
                 <Box textAlign="center">
                     <Typography variant="h3" sx={{ color: "#FFFFFF", fontWeight: 600}}>TOL</Typography>
-                    <Box sx={{ mx: "auto", display: "flex", justifyContent: "center" }}>
-                      <Typography className="red_shadow" variant="h1" sx={{backgroundColor: "#000000", height: "inherit", fontFamily: "digital-7", color: "red", fontSize: { xs: "3.5rem", sm: "4.5rem", md: "5.5rem", lg: "6.5rem", xl: "7.5rem" }, px: 2.5, border: 1, borderColor: "white", borderWidth: 1, borderRadius: 2, display: "flex", alignItems: "center" }}>{changeCourt ? timeoutLight : timeoutDark}</Typography>
+                    <Box sx={{ mx: "auto", display: "flex", justifyContent: "center", border: 1, borderColor: "white", borderWidth: 1, borderRadius: 2 }}>
+                      <Typography className="red_shadow" variant="h1" sx={{backgroundColor: "#000000", height: "100%", fontFamily: "digital-7-mono", color: "red", fontSize: { xs: "3.5rem", sm: "4.5rem", md: "5.5rem", lg: "6.5rem", xl: "7.5rem" }, px: 2.5,  display: "flex", alignItems: "center" }}>{changeCourt ? timeoutLight : timeoutDark}</Typography>
                     </Box>
                   </Box>
                 </Grid>
