@@ -85,7 +85,7 @@ const Scoreboard = () => {
                   }
                 </Grid>
                 <Divider sx={{ width:'99.8%', borderColor: "#FFFFFF", mt: 3, borderWidth: 1}}></Divider>
-                <Grid item xl={4} lg={4} md={4} sm={4} xs={6} sx={{ mt: 4 }}>
+                <Grid item xl={4} lg={4} md={4} sm={4} xs={12} sx={{ mt: 4 }}>
                   <Box textAlign="center">
                     <Typography variant="h2" sx={{ color: "#FFFFFF", fontWeight: 900}}>{changeCourt ? "DARK" : "LIGHT"}</Typography>
                     <Box sx={{ mx: "auto", display: "flex", justifyContent: "center" }}>
@@ -93,7 +93,7 @@ const Scoreboard = () => {
                     </Box>
                   </Box>
                 </Grid>
-                <Grid item xl={4} lg={4} md={4} sm={4} xs={6} sx={{ mt: 4 }}>
+                <Grid item xl={4} lg={4} md={4} sm={4} xs={12} sx={{ mt: 4 }}>
                   <Box textAlign="center">
                   <Typography variant="h3" sx={{ color: "#FFFFFF", fontWeight: 900}}>SHOT CLOCK</Typography>
                     <Box sx={{ mx: "auto", display: "flex", justifyContent: "center" }}>
@@ -145,7 +145,7 @@ const Scoreboard = () => {
                 <Box textAlign="center">
                     <Typography variant="h3" sx={{ color: "#FFFFFF", fontWeight: 600}}>TOL</Typography>
                     <Box sx={{ mx: "auto", display: "flex", justifyContent: "center" }}>
-                      <Typography className="red_shadow" variant="h4" sx={{backgroundColor: "#000000", height: "100%", fontFamily: "digital-7-mono", color: "red", fontSize: { xs: "4.5rem", sm: "5rem", md: "6rem", lg: "6.5rem", xl: "7.5rem" }, px: 2.5, border: 1, borderColor: "white", borderWidth: 1, borderRadius: 2, display: "flex", alignItems: "center" }}>{changeCourt ? timeoutLight : timeoutDark}</Typography>
+                      <Typography className="red_shadow" variant="h1" sx={{backgroundColor: "#000000", height: "inherit%", fontFamily: "digital-7-mono", color: "red", fontSize: { xs: "4.5rem", sm: "5rem", md: "6rem", lg: "6.5rem", xl: "7.5rem" }, px: 2.5, border: 1, borderColor: "white", borderWidth: 1, borderRadius: 2, display: "flex", alignItems: "center" }}>{changeCourt ? timeoutLight : timeoutDark}</Typography>
                     </Box>
                   </Box>
                 </Grid>
