@@ -353,8 +353,8 @@ const App = () => {
               <Divider sx={{ width:'100%', mb: 2 }}></Divider>
               <Container sx={{ display: "flex", alignItems: "center" }} disableGutters>
                 <Typography variant="h6" sx={{ fontFamily: "digital-7", color: "#000000", fontWeight: 900, pr: .2 }}>{changeCourt ? "DARK" : "LIGHT"}</Typography>
-                <TextField fullWidth disabled value={changeCourt ? darkScore : lightScore} type="number" inputProps={{ sx: { textAlign: "center", fontFamily: "digital-7", fontSize: "3rem", p: 0 }}} sx={{ "& .MuiInputBase-input.Mui-disabled": { WebkitTextFillColor: "rgba(0, 0, 0, 0.87)"}, mr: .5,}}></TextField>
-                <TextField fullWidth disabled value={changeCourt ? lightScore : darkScore} type="number" inputProps={{ sx: { textAlign: "center", fontFamily: "digital-7", fontSize: "3rem", p: 0 }}} sx={{ "& .MuiInputBase-input.Mui-disabled": { WebkitTextFillColor: "rgba(0, 0, 0, 0.87)"}, ml: .5}}></TextField>
+                <TextField fullWidth disabled value={changeCourt ? darkScore : lightScore} type="number" inputProps={{ sx: { textAlign: "center", fontSize: "1.5rem" }}} sx={{ "& .MuiInputBase-input.Mui-disabled": { WebkitTextFillColor: "rgba(0, 0, 0, 0.87)"}, mr: .5,}}></TextField>
+                <TextField fullWidth disabled value={changeCourt ? lightScore : darkScore} type="number" inputProps={{ sx: { textAlign: "center", fontSize: "1.5rem" }}} sx={{ "& .MuiInputBase-input.Mui-disabled": { WebkitTextFillColor: "rgba(0, 0, 0, 0.87)"}, ml: .5}}></TextField>
                 <Typography variant="h6" sx={{ fontFamily: "digital-7", color: "#000000", fontWeight: 900, pl: .3 }}>{changeCourt ? "LIGHT" : "DARK"}</Typography>
               </Container>
               <Container disableGutters>
@@ -438,8 +438,8 @@ const App = () => {
               <Divider style={{ width:'100%', marginBottom: "1rem"}}></Divider>
               <Container sx={{ display: "flex", alignItems: "center"}} disableGutters>
               <Typography variant="h6" sx={{ fontFamily: "digital-7", color: "#000000", fontWeight: 900, pr: .2 }}>{changeCourt ? "DARK" : "LIGHT"}</Typography>
-                <TextField disabled fullWidth value={changeCourt ? timeoutDark : timeoutLight} type="number" inputProps={{ sx: { textAlign: "center", fontFamily: "digital-7", fontSize: "2.5rem", p: 0 }}} sx={{ "& .MuiInputBase-input.Mui-disabled": { WebkitTextFillColor: "rgba(0, 0, 0, 0.87)"}, mr: .5,}}></TextField>
-                <TextField disabled fullWidth value={changeCourt ? timeoutLight : timeoutDark} type="number" inputProps={{ sx: { textAlign: "center", fontFamily: "digital-7", fontSize: "2.5rem", p: 0 }}} sx={{ "& .MuiInputBase-input.Mui-disabled": { WebkitTextFillColor: "rgba(0, 0, 0, 0.87)"}, ml: .5,}}></TextField>
+                <TextField disabled fullWidth value={changeCourt ? timeoutDark : timeoutLight} type="number" inputProps={{ sx: { textAlign: "center", fontSize: "1.5rem" }}} sx={{ "& .MuiInputBase-input.Mui-disabled": { WebkitTextFillColor: "rgba(0, 0, 0, 0.87)"}, mr: .5,}}></TextField>
+                <TextField disabled fullWidth value={changeCourt ? timeoutLight : timeoutDark} type="number" inputProps={{ sx: { textAlign: "center", fontSize: "1.5rem" }}} sx={{ "& .MuiInputBase-input.Mui-disabled": { WebkitTextFillColor: "rgba(0, 0, 0, 0.87)"}, ml: .5,}}></TextField>
                 <Typography variant="h6" sx={{ fontFamily: "digital-7", color: "#000000", fontWeight: 900, pl: .3 }}>{changeCourt ? "LIGHT" : "DARK"}</Typography>
               </Container>
               <Container disableGutters>
@@ -522,8 +522,8 @@ const App = () => {
               <Divider style={{ width:'100%', marginBottom: "1rem"}}></Divider>
               <Container sx={{ display: "flex", alignItems: "center"}} disableGutters>
               <Typography variant="h6" sx={{ fontFamily: "digital-7", color: "#000000", fontWeight: 900, pr: .2 }}>{changeCourt ? "DARK" : "LIGHT"}</Typography>
-                <TextField disabled fullWidth value={changeCourt ? foulDark : foulLight} type="number" inputProps={{ sx: { textAlign: "center", fontFamily: "digital-7", fontSize: "2.5rem", p: 0 }}} sx={{ "& .MuiInputBase-input.Mui-disabled": { WebkitTextFillColor: "rgba(0, 0, 0, 0.87)"}, mr: .5,}}></TextField>
-                <TextField disabled fullWidth value={changeCourt ? foulLight : foulDark} type="number" inputProps={{ sx: { textAlign: "center", fontFamily: "digital-7", fontSize: "2.5rem", p: 0 }}} sx={{ "& .MuiInputBase-input.Mui-disabled": { WebkitTextFillColor: "rgba(0, 0, 0, 0.87)"}, ml: .5,}}></TextField>
+                <TextField disabled fullWidth value={changeCourt ? foulDark : foulLight} type="number" inputProps={{ sx: { textAlign: "center", fontSize: "1.5rem" }}} sx={{ "& .MuiInputBase-input.Mui-disabled": { WebkitTextFillColor: "rgba(0, 0, 0, 0.87)"}, mr: .5,}}></TextField>
+                <TextField disabled fullWidth value={changeCourt ? foulLight : foulDark} type="number" inputProps={{ sx: { textAlign: "center", fontSize: "1.5rem" }}} sx={{ "& .MuiInputBase-input.Mui-disabled": { WebkitTextFillColor: "rgba(0, 0, 0, 0.87)"}, ml: .5,}}></TextField>
                 <Typography variant="h6" sx={{ fontFamily: "digital-7", color: "#000000", fontWeight: 900, pl: .3 }}>{changeCourt ? "LIGHT" : "DARK"}</Typography>
               </Container>
               <Container disableGutters>
