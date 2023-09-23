@@ -1,4 +1,4 @@
-import { Box, ButtonGroup, Button, Container, Divider, Grid, TextField, IconButton } from "@mui/material";
+import { Box, ButtonGroup, Button, Container, Divider, Grid, TextField, IconButton, Typography } from "@mui/material";
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 import PauseCircleOutlineIcon from '@mui/icons-material/PauseCircleOutline';
 import HourglassBottomOutlinedIcon from '@mui/icons-material/HourglassBottomOutlined';
@@ -313,67 +313,118 @@ const App = () => {
 
   return (
     <>
+    <Container maxWidth={false} disableGutters sx={{ p: 1 }}>
       <IconButton size="small"><Link to="/scoreboard" target="_blank">Open Scoreboard</Link></IconButton>
       <Grid container spacing={3}>
-        <Grid item lg={12} style={{ textAlign: "center", fontSize: "1.9rem" }}><h1 >WWCF Basketball League Scoreboard 2023</h1></Grid>
-        <Divider style={{ width:'100%', fontSize: "1.25rem"}}>Game Controls</Divider>
+        <Grid item lg={12} xl={12} style={{ textAlign: "center" }}><Typography variant="h2" sx={{ fontFamily: "digital-7", color: "#000000", fontWeight: 900}}>WWCF Basketball League Scoreboard 2023</Typography></Grid>
+        <Divider sx={{ width:'100%', fontSize: "1.50rem"}}>Game Controls</Divider>
         <Grid item lg={4} md={6} xs={12}>
-          <Box sx={{ width: 469.328, height: 300, display: "flex", border: "solid", borderRadius: 3, ml: 1.5}}>
-            <Container fixed>
-              <h2 style={{ fontSize: "1.75rem" }}>Game Clock Setting</h2>
+          <Box sx={{ width: "99%", height: "100%", display: "flex", border: "solid", borderRadius: 4}}>
+            <Container fixed sx={{ p: 3 }}>
+              <Typography variant="h4" sx={{ fontFamily: "digital-7", color: "#000000", fontWeight: 900}}>GAME CLOCK SETTINGS</Typography>
+              <Divider sx={{ width:'100%', mb: 1 }}></Divider>
               <TextField label='Minutes' value={minutes} type="number" sx={{ width: 75, marginRight: 1 }} onChange={changeMinutes}></TextField>
               <TextField label='Seconds' value={seconds} type="number" sx={{ width: 75, marginRight: 1}} onChange={changeSeconds}></TextField>
-              <IconButton size="large" sx={{ marginTop: -.1, marginLeft: -1 }} onClick={handleGameClockPlayToggle}>
+              <IconButton size="large" sx={{ my: "2%", p: .5 }} onClick={handleGameClockPlayToggle}>
                 <PlayCircleOutlineIcon fontSize="inherit" />
               </IconButton>
-              <IconButton size="large" sx={{ marginTop: -.1, marginLeft: -2.5 }} onClick={handleGameClockPauseToggle}>
+              <IconButton size="large" sx={{ p: .5 }} onClick={handleGameClockPauseToggle}>
                 <PauseCircleOutlineIcon fontSize="inherit"></PauseCircleOutlineIcon>
               </IconButton>
-              <IconButton size="large" sx={{ marginTop: -.1, marginLeft: -2.5 }} onClick={handleGameClockResetToggle}>
+              <IconButton size="large" sx={{ p: .5 }} onClick={handleGameClockResetToggle}>
                 <RestartAltIcon fontSize="inherit"></RestartAltIcon>
               </IconButton>
-              <h2 style={{ fontSize: "1.75rem" }}>Shot Clock Setting</h2>
+              <Typography variant="h4" sx={{ fontFamily: "digital-7", color: "#000000", fontWeight: 900, mt: 3 }}>SHOT CLOCK SETTINGS</Typography>
+              <Divider sx={{ width:'100%', mb: 1 }}></Divider>
               <TextField label='Seconds' value={shotClockSeconds} type="number" sx={{ width: 75, marginRight: 1}} onChange={changeShotClock}></TextField>
-              <IconButton size="large" sx={{ marginTop: -.1, marginLeft: -1 }} onClick={handleShotClockHalfReset}>
+              <IconButton size="large" sx={{ my: "2%", p: .5 }} onClick={handleShotClockHalfReset}>
                 <HourglassBottomOutlinedIcon fontSize="inherit" />
               </IconButton>
-              <IconButton size="large" sx={{ marginTop: -.1, marginLeft: -2.5 }} onClick={handleShotClockFullReset}>
+              <IconButton size="large" sx={{ my: "2%", p: .5 }} onClick={handleShotClockFullReset}>
                 <RestartAltIcon fontSize="inherit"></RestartAltIcon>
               </IconButton>
             </Container>
           </Box>
         </Grid>
         <Grid item lg={4} md={6} xs={12}>
-        <Box sx={{ width: 469.328, height: 300, display: "flex", border: "solid", borderRadius: 3 }}>
+        <Box sx={{ width: "99%", height: "100%", display: "flex", border: "solid", borderRadius: 3 }}>
             <Container fixed>
-              <h2 style={{ fontSize: "1.75rem" }}>Game Score Setting</h2>
-              <Divider style={{ width:'100%', marginBottom: "1rem"}}></Divider>
-              <Container sx={{ display: "flex", justifyContent: "center"}} >
-                <h3 style={{ fontSize: "1.25rem", marginRight: ".5rem" }}>Light</h3>
-                <TextField fullWidth disabled value={lightScore} type="number" inputProps={{ style: { textAlign: "center" }}} sx={{ marginRight: 1 }}></TextField>
-                <TextField fullWidth disabled value={darkScore} type="number" inputProps={{ style: { textAlign: "center" }}} sx={{ marginRight: 1}}></TextField>
-                <h3 style={{ fontSize: "1.25rem", marginRight: ".5rem" }}>Dark</h3>
+              <Typography variant="h4" sx={{ fontFamily: "digital-7", color: "#000000", fontWeight: 900, mt: 3 }}>GAME SCORE SETTINGS</Typography>
+              <Divider sx={{ width:'100%', mb: 2 }}></Divider>
+              <Container sx={{ display: "flex", alignItems: "center" }} disableGutters>
+                <Typography variant="h6" sx={{ fontFamily: "digital-7", color: "#000000", fontWeight: 900, pr: .2 }}>{changeCourt ? "DARK" : "LIGHT"}</Typography>
+                <TextField fullWidth disabled value={changeCourt ? darkScore : lightScore} type="number" inputProps={{ sx: { textAlign: "center", fontFamily: "digital-7", fontSize: "3rem", p: 0 }}} sx={{ mr: .5}}></TextField>
+                <TextField fullWidth disabled value={changeCourt ? lightScore : darkScore} type="number" inputProps={{ sx: { textAlign: "center", fontFamily: "digital-7", fontSize: "3rem", p: 0 }}} sx={{ ml: .5}}></TextField>
+                <Typography variant="h6" sx={{ fontFamily: "digital-7", color: "#000000", fontWeight: 900, pl: .3 }}>{changeCourt ? "LIGHT" : "DARK"}</Typography>
               </Container>
-              <ButtonGroup color="success" variant="outlined" aria-label="outlined button group" sx={{ marginTop: 2}}>
-                <Button onClick={plusOnePointLight}>+<LooksOneIcon/></Button>
-                <Button onClick={plusTwoPointLight}>+<LooksTwoIcon/></Button>
-                <Button onClick={plusThreePointLight}>+<Looks3Icon/></Button>
-              </ButtonGroup>
-              <ButtonGroup color="success" variant="contained" aria-label="outlined button group" sx={{ marginTop: 2, marginLeft: 4.23 }}>
-                <Button onClick={plusOnePointDark}>+<LooksOneIcon/></Button>
-                <Button onClick={plusTwoPointDark}>+<LooksTwoIcon/></Button>
-                <Button onClick={plusThreePointDark}>+<Looks3Icon/></Button>
-              </ButtonGroup>
-              <ButtonGroup color="error" variant="outlined" aria-label="outlined button group" sx={{ marginTop: 2}}>
-                <Button onClick={minusOnePointLight}>-<LooksOneIcon/></Button>
-                <Button onClick={minusTwoPointLight}>-<LooksTwoIcon/></Button>
-                <Button onClick={minusThreePointLight}>-<Looks3Icon/></Button>
-              </ButtonGroup>
-              <ButtonGroup color="error" variant="contained" aria-label="outlined button group" sx={{ marginTop: 2, marginLeft: 6.87 }}>
-                <Button onClick={minusOnePointDark}>-<LooksOneIcon/></Button>
-                <Button onClick={minusTwoPointDark}>-<LooksTwoIcon/></Button>
-                <Button onClick={minusThreePointDark}>-<Looks3Icon/></Button>
-              </ButtonGroup>
+              <Container disableGutters>
+                {changeCourt ? 
+                  <>
+                  <Grid container>
+                  <Grid item lg={6} md={6} sm={6} xs={6} sx={{ display: "flex", alignItems: "start"}}>
+                    <ButtonGroup color="success" variant="contained" aria-label="outlined button group" sx={{ marginTop: 2, mr: "auto" }}>
+                      <Button onClick={plusOnePointDark}>+<LooksOneIcon/></Button>
+                      <Button onClick={plusTwoPointDark}>+<LooksTwoIcon/></Button>
+                      <Button onClick={plusThreePointDark}>+<Looks3Icon/></Button>
+                    </ButtonGroup>
+                  </Grid>
+                  <Grid item lg={6} md={6} sm={6} xs={6} sx={{ display: "flex", alignItems: "end"}}>
+                    <ButtonGroup color="success" variant="outlined" aria-label="outlined button group" sx={{ marginTop: 2, ml: "auto"}}>
+                      <Button onClick={plusOnePointLight}>+<LooksOneIcon/></Button>
+                      <Button onClick={plusTwoPointLight}>+<LooksTwoIcon/></Button>
+                      <Button onClick={plusThreePointLight}>+<Looks3Icon/></Button>
+                    </ButtonGroup>
+                  </Grid>
+                  <Grid item lg={6} md={6} sm={6} xs={6} sx={{ display: "flex", alignItems: "start"}}>
+                    <ButtonGroup color="error" variant="contained" aria-label="outlined button group" sx={{ marginTop: 2, mr: "auto" }}>
+                      <Button onClick={minusOnePointDark}>-<LooksOneIcon/></Button>
+                      <Button onClick={minusTwoPointDark}>-<LooksTwoIcon/></Button>
+                      <Button onClick={minusThreePointDark}>-<Looks3Icon/></Button>
+                    </ButtonGroup>
+                  </Grid>
+                  <Grid item lg={6} md={6} sm={6} xs={6} sx={{ display: "flex", alignItems: "end"}}>
+                    <ButtonGroup color="error" variant="outlined" aria-label="outlined button group" sx={{ marginTop: 2, ml: "auto" }}>
+                      <Button onClick={minusOnePointLight}>-<LooksOneIcon/></Button>
+                      <Button onClick={minusTwoPointLight}>-<LooksTwoIcon/></Button>
+                      <Button onClick={minusThreePointLight}>-<Looks3Icon/></Button>
+                    </ButtonGroup>
+                  </Grid>
+                </Grid>
+                  </>
+                   :
+                <>
+                <Grid container>
+                  <Grid item lg={6} md={6} sm={6} xs={6} sx={{ display: "flex", alignItems: "start"}}>
+                    <ButtonGroup color="success" variant="outlined" aria-label="outlined button group" sx={{ marginTop: 2, mr: "auto"}}>
+                      <Button onClick={plusOnePointLight}>+<LooksOneIcon/></Button>
+                      <Button onClick={plusTwoPointLight}>+<LooksTwoIcon/></Button>
+                      <Button onClick={plusThreePointLight}>+<Looks3Icon/></Button>
+                    </ButtonGroup>
+                  </Grid>
+                  <Grid item lg={6} md={6} sm={6} xs={6} sx={{ display: "flex", alignItems: "end"}}>
+                    <ButtonGroup color="success" variant="contained" aria-label="outlined button group" sx={{ marginTop: 2, ml: "auto" }}>
+                      <Button onClick={plusOnePointDark}>+<LooksOneIcon/></Button>
+                      <Button onClick={plusTwoPointDark}>+<LooksTwoIcon/></Button>
+                      <Button onClick={plusThreePointDark}>+<Looks3Icon/></Button>
+                    </ButtonGroup>
+                  </Grid>
+                  <Grid item lg={6} md={6} sm={6} xs={6} sx={{ display: "flex", alignItems: "start"}}>
+                    <ButtonGroup color="error" variant="outlined" aria-label="outlined button group" sx={{ marginTop: 2, mr: "auto" }}>
+                      <Button onClick={minusOnePointLight}>-<LooksOneIcon/></Button>
+                      <Button onClick={minusTwoPointLight}>-<LooksTwoIcon/></Button>
+                      <Button onClick={minusThreePointLight}>-<Looks3Icon/></Button>
+                    </ButtonGroup>
+                  </Grid>
+                  <Grid item lg={6} md={6} sm={6} xs={6} sx={{ display: "flex", alignItems: "end"}}>
+                    <ButtonGroup color="error" variant="contained" aria-label="outlined button group" sx={{ marginTop: 2, ml: "auto" }}>
+                      <Button onClick={minusOnePointDark}>-<LooksOneIcon/></Button>
+                      <Button onClick={minusTwoPointDark}>-<LooksTwoIcon/></Button>
+                      <Button onClick={minusThreePointDark}>-<Looks3Icon/></Button>
+                    </ButtonGroup>
+                  </Grid>
+                </Grid>
+                </> }
+              </Container>
               <Box sx={{ textAlign: "center" }}>
                 <Button value={changeCourt} onClick={handleChangeCourt} size="small" variant="outlined" sx={{ marginTop: 1}}>Change Court</Button>
               </Box>
@@ -381,7 +432,7 @@ const App = () => {
           </Box>
         </Grid>
         <Grid item lg={4} md={6} xs={12}>
-        <Box sx={{ width: 469.328, height: 300, display: "flex", border: "solid", borderRadius: 3 }}>
+        <Box sx={{ width: "99%", height: "100%", display: "flex", border: "solid", borderRadius: 3 }}>
             <Container fixed>
               <h2 style={{ fontSize: "1.75rem" }}>TimeOut and Ball Possession Setting</h2>
               <Divider style={{ width:'100%', marginBottom: "1rem"}}></Divider>
@@ -420,8 +471,8 @@ const App = () => {
             </Container>
           </Box>
         </Grid>
-        <Grid item lg={4} md={6} xs={12}>
-        <Box sx={{ width: 469.328, height: 300, display: "flex", border: "solid", borderRadius: 3 }}>
+        <Grid item lg={4} md={6} xs={12} sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <Box sx={{ width: "99%", height: "100%", display: "flex", border: "solid", borderRadius: 3 }}>
             <Container fixed>
               <h2 style={{ fontSize: "1.75rem" }}>Team Foul and Quarter Setting</h2>
               <Divider style={{ width:'100%', marginBottom: "1rem"}}></Divider>
@@ -448,6 +499,7 @@ const App = () => {
           </Box>
         </Grid>
       </Grid>
+      </Container>
     </>
   );
 }
