@@ -313,13 +313,13 @@ const App = () => {
 
   return (
     <>
-    <Container maxWidth={false} disableGutters sx={{ p: 1 }}>
+    <Container maxWidth={false} disableGutters sx={{ p: 1, backgroundColor: "#f4f8fb" }}>
       <IconButton size="small"><Link to="/scoreboard" target="_blank">Open Scoreboard</Link></IconButton>
-      <Grid container spacing={3}>
-        <Grid item lg={12} xl={12} style={{ textAlign: "center" }}><Typography variant="h2" sx={{ fontFamily: "digital-7", color: "#000000", fontWeight: 900}}>WWCF Basketball League Scoreboard 2023</Typography></Grid>
-        <Divider sx={{ width:'100%', fontSize: "1.50rem"}}>Game Controls</Divider>
+      <Grid container columnSpacing={1} rowSpacing={2}>
+        <Grid item lg={12} xl={12} style={{ textAlign: "center" }}><Typography variant="h2" sx={{ fontFamily: "digital-7", color: "#0F77BC", fontWeight: 900}}>WWCF Basketball League Scoreboard 2023</Typography></Grid>
+        <Divider sx={{ width:'100%', fontSize: "1.50rem" }}>Game Controls</Divider>
         <Grid item lg={4} md={6} xs={12}>
-          <Box sx={{ width: "99%", height: "100%", display: "flex", border: "solid", borderRadius: 4}}>
+          <Box sx={{ width: "99%", height: "100%", display: "flex", border: "solid", borderRadius: 2}}>
             <Container fixed sx={{ p: 3 }}>
               <Typography variant="h4" sx={{ fontFamily: "digital-7", color: "#000000", fontWeight: 900}}>GAME CLOCK SETTINGS</Typography>
               <Divider sx={{ width:'100%', mb: 1 }}></Divider>
@@ -347,14 +347,14 @@ const App = () => {
           </Box>
         </Grid>
         <Grid item lg={4} md={6} xs={12}>
-        <Box sx={{ width: "99%", height: "100%", display: "flex", border: "solid", borderRadius: 3 }}>
+        <Box sx={{ width: "99%", height: "100%", display: "flex", border: "solid", borderRadius: 2 }}>
             <Container fixed>
               <Typography variant="h4" sx={{ fontFamily: "digital-7", color: "#000000", fontWeight: 900, mt: 3 }}>GAME SCORE SETTINGS</Typography>
               <Divider sx={{ width:'100%', mb: 2 }}></Divider>
               <Container sx={{ display: "flex", alignItems: "center" }} disableGutters>
                 <Typography variant="h6" sx={{ fontFamily: "digital-7", color: "#000000", fontWeight: 900, pr: .2 }}>{changeCourt ? "DARK" : "LIGHT"}</Typography>
-                <TextField fullWidth disabled value={changeCourt ? darkScore : lightScore} type="number" inputProps={{ sx: { textAlign: "center", fontFamily: "digital-7", fontSize: "3rem", p: 0 }}} sx={{ mr: .5}}></TextField>
-                <TextField fullWidth disabled value={changeCourt ? lightScore : darkScore} type="number" inputProps={{ sx: { textAlign: "center", fontFamily: "digital-7", fontSize: "3rem", p: 0 }}} sx={{ ml: .5}}></TextField>
+                <TextField fullWidth disabled value={changeCourt ? darkScore : lightScore} type="number" inputProps={{ sx: { textAlign: "center", fontFamily: "digital-7", fontSize: "3rem", p: 0 }}} sx={{ "& .MuiInputBase-input.Mui-disabled": { WebkitTextFillColor: "rgba(0, 0, 0, 0.87)"}, mr: .5,}}></TextField>
+                <TextField fullWidth disabled value={changeCourt ? lightScore : darkScore} type="number" inputProps={{ sx: { textAlign: "center", fontFamily: "digital-7", fontSize: "3rem", p: 0 }}} sx={{ "& .MuiInputBase-input.Mui-disabled": { WebkitTextFillColor: "rgba(0, 0, 0, 0.87)"}, ml: .5}}></TextField>
                 <Typography variant="h6" sx={{ fontFamily: "digital-7", color: "#000000", fontWeight: 900, pl: .3 }}>{changeCourt ? "LIGHT" : "DARK"}</Typography>
               </Container>
               <Container disableGutters>
@@ -376,14 +376,14 @@ const App = () => {
                     </ButtonGroup>
                   </Grid>
                   <Grid item lg={6} md={6} sm={6} xs={6} sx={{ display: "flex", alignItems: "start"}}>
-                    <ButtonGroup color="error" variant="contained" aria-label="outlined button group" sx={{ marginTop: 2, mr: "auto" }}>
+                    <ButtonGroup color="error" variant="contained" aria-label="outlined button group" sx={{ marginTop: .5, mr: "auto" }}>
                       <Button onClick={minusOnePointDark}>-<LooksOneIcon/></Button>
                       <Button onClick={minusTwoPointDark}>-<LooksTwoIcon/></Button>
                       <Button onClick={minusThreePointDark}>-<Looks3Icon/></Button>
                     </ButtonGroup>
                   </Grid>
                   <Grid item lg={6} md={6} sm={6} xs={6} sx={{ display: "flex", alignItems: "end"}}>
-                    <ButtonGroup color="error" variant="outlined" aria-label="outlined button group" sx={{ marginTop: 2, ml: "auto" }}>
+                    <ButtonGroup color="error" variant="outlined" aria-label="outlined button group" sx={{ marginTop: .5, ml: "auto" }}>
                       <Button onClick={minusOnePointLight}>-<LooksOneIcon/></Button>
                       <Button onClick={minusTwoPointLight}>-<LooksTwoIcon/></Button>
                       <Button onClick={minusThreePointLight}>-<Looks3Icon/></Button>
@@ -409,14 +409,14 @@ const App = () => {
                     </ButtonGroup>
                   </Grid>
                   <Grid item lg={6} md={6} sm={6} xs={6} sx={{ display: "flex", alignItems: "start"}}>
-                    <ButtonGroup color="error" variant="outlined" aria-label="outlined button group" sx={{ marginTop: 2, mr: "auto" }}>
+                    <ButtonGroup color="error" variant="outlined" aria-label="outlined button group" sx={{ marginTop: .5, mr: "auto" }}>
                       <Button onClick={minusOnePointLight}>-<LooksOneIcon/></Button>
                       <Button onClick={minusTwoPointLight}>-<LooksTwoIcon/></Button>
                       <Button onClick={minusThreePointLight}>-<Looks3Icon/></Button>
                     </ButtonGroup>
                   </Grid>
                   <Grid item lg={6} md={6} sm={6} xs={6} sx={{ display: "flex", alignItems: "end"}}>
-                    <ButtonGroup color="error" variant="contained" aria-label="outlined button group" sx={{ marginTop: 2, ml: "auto" }}>
+                    <ButtonGroup color="error" variant="contained" aria-label="outlined button group" sx={{ marginTop: .5, ml: "auto" }}>
                       <Button onClick={minusOnePointDark}>-<LooksOneIcon/></Button>
                       <Button onClick={minusTwoPointDark}>-<LooksTwoIcon/></Button>
                       <Button onClick={minusThreePointDark}>-<Looks3Icon/></Button>
@@ -432,67 +432,145 @@ const App = () => {
           </Box>
         </Grid>
         <Grid item lg={4} md={6} xs={12}>
-        <Box sx={{ width: "99%", height: "100%", display: "flex", border: "solid", borderRadius: 3 }}>
+        <Box sx={{ width: "99%", height: "100%", display: "flex", border: "solid", borderRadius: 2 }}>
             <Container fixed>
-              <h2 style={{ fontSize: "1.75rem" }}>TimeOut and Ball Possession Setting</h2>
+              <Typography variant="h4" sx={{ fontFamily: "digital-7", color: "#000000", fontWeight: 900, mt: 3 }}>TIMEOUT/POSSESSION SETTING</Typography>
               <Divider style={{ width:'100%', marginBottom: "1rem"}}></Divider>
-              <Container sx={{ display: "flex", justifyContent: "center"}} >
-                <h3 style={{ fontSize: "1.25rem", marginRight: ".5rem" }}>Light</h3>
-                <TextField disabled fullWidth value={timeoutLight} type="number" inputProps={{ style: { textAlign: "center" }}} sx={{ marginRight: 1 }}></TextField>
-                <TextField disabled fullWidth value={timeoutDark} type="number" inputProps={{ style: { textAlign: "center" }}} sx={{ marginRight: 1}}></TextField>
-                <h3 style={{ fontSize: "1.25rem", marginRight: ".5rem" }}>Dark</h3>
+              <Container sx={{ display: "flex", alignItems: "center"}} disableGutters>
+              <Typography variant="h6" sx={{ fontFamily: "digital-7", color: "#000000", fontWeight: 900, pr: .2 }}>{changeCourt ? "DARK" : "LIGHT"}</Typography>
+                <TextField disabled fullWidth value={changeCourt ? timeoutDark : timeoutLight} type="number" inputProps={{ sx: { textAlign: "center", fontFamily: "digital-7", fontSize: "2.5rem", p: 0 }}} sx={{ "& .MuiInputBase-input.Mui-disabled": { WebkitTextFillColor: "rgba(0, 0, 0, 0.87)"}, mr: .5,}}></TextField>
+                <TextField disabled fullWidth value={changeCourt ? timeoutLight : timeoutDark} type="number" inputProps={{ sx: { textAlign: "center", fontFamily: "digital-7", fontSize: "2.5rem", p: 0 }}} sx={{ "& .MuiInputBase-input.Mui-disabled": { WebkitTextFillColor: "rgba(0, 0, 0, 0.87)"}, ml: .5,}}></TextField>
+                <Typography variant="h6" sx={{ fontFamily: "digital-7", color: "#000000", fontWeight: 900, pl: .3 }}>{changeCourt ? "LIGHT" : "DARK"}</Typography>
               </Container>
-              <Button size="small" variant="outlined" onClick={lightTimeoutDecrement}>Timeout Light</Button>
-              <IconButton size="large" sx={{ marginLeft: -.2 }} onClick={resetLightTimeout}>
-                <RestartAltIcon fontSize="inherit"></RestartAltIcon>
-              </IconButton>
-              <IconButton size="large" sx={{ marginLeft: 8.75 }} onClick={resetDarkTimeout}>
-                <RestartAltIcon fontSize="inherit"></RestartAltIcon>
-              </IconButton>
-              <Button size="small" variant="contained" sx={{ marginRight: 0 }} onClick={darkTimeoutDecrement} >Timeout Dark</Button>
-              <Divider style={{ width:'100%', marginTop: ".5rem"}}></Divider>
-              <Box sx={{ marginTop: 2, display: "flex" }}>
-                <FormControl>
+              <Container disableGutters>
+              {
+                changeCourt ? 
+                <>
+                <Grid container>
+                  <Grid item lg={6} md={6} sm={6} xs={6} sx={{ display: "flex", alignItems: "start"}}>
+                  <Box>
+                  <Button size="small" variant="contained" onClick={darkTimeoutDecrement} sx={{ marginTop: 2, mr: "auto", my: "auto" }}>Timeout Dark</Button>
+                    <IconButton size="large" onClick={resetDarkTimeout}>
+                      <RestartAltIcon fontSize="inherit"></RestartAltIcon>
+                    </IconButton>
+                  </Box>
+                  </Grid>
+                  <Grid item lg={6} md={6} sm={6} xs={6} sx={{ display: "flex", alignItems: "end", flexDirection: "row-reverse"}}>
+                    <Button size="small" variant="outlined" onClick={lightTimeoutDecrement} sx={{ my: "auto"}}>Timeout Light</Button>
+                    <IconButton size="large" onClick={resetLightTimeout} sx={{ ml: "auto", my: "auto" }}>
+                      <RestartAltIcon fontSize="inherit"></RestartAltIcon>
+                    </IconButton>
+                  </Grid>
+                </Grid>
+                </>
+                :
+                <>
+                <Grid container>
+                  <Grid item lg={6} md={6} sm={6} xs={6} sx={{ display: "flex", alignItems: "start"}}>
+                  <Box>
+                  <Button size="small" variant="outlined" onClick={lightTimeoutDecrement} sx={{ marginTop: 2, mr: "auto", my: "auto" }}>Timeout Light</Button>
+                    <IconButton size="large" onClick={resetLightTimeout}>
+                      <RestartAltIcon fontSize="inherit"></RestartAltIcon>
+                    </IconButton>
+                  </Box>
+                  </Grid>
+                  <Grid item lg={6} md={6} sm={6} xs={6} sx={{ display: "flex", alignItems: "end", flexDirection: "row-reverse"}}>
+                    <Button size="small" variant="contained" onClick={darkTimeoutDecrement} sx={{ my: "auto"}}>Timeout Dark</Button>
+                    <IconButton size="large" onClick={resetDarkTimeout} sx={{ ml: "auto", my: "auto" }}>
+                      <RestartAltIcon fontSize="inherit"></RestartAltIcon>
+                    </IconButton>
+                  </Grid>
+                </Grid>
+                </>
+              }
+              </Container>
+              <Divider sx={{ width:'100%' }}></Divider>
+              <Box sx={{ marginTop: 1, display: "flex" }}>
+                <FormControl sx={{ mt: 1 }}>
                   <FormLabel>Ball Possession</FormLabel>
+                  {changeCourt 
+                  ? 
+                    <RadioGroup row onChange={handlePossessionChange}>
+                      <FormControlLabel value="Dark" control={<Radio />} label="Dark" />
+                      <FormControlLabel value="Light" control={<Radio />} label="Light" />
+                    </RadioGroup>
+                  :                  
                   <RadioGroup row onChange={handlePossessionChange}>
                     <FormControlLabel value="Light" control={<Radio />} label="Light" />
                     <FormControlLabel value="Dark" control={<Radio />} label="Dark" />
                   </RadioGroup>
+                  }
                 </FormControl>
-                <Divider orientation="vertical" style={{ height: 70, margin: 0, padding: 0 }}></Divider>
-                <h3 style={{ marginLeft: 20, marginTop: 30}}>Buzzers</h3>
-                <IconButton size="large" onClick={() => { longBuzzer.play() }}>
-                  <CampaignOutlinedIcon sx={{ fontSize: "inherit" }}/>
-                </IconButton>
-                <IconButton size="large" onClick={() => { shortBuzzer.play() }}>
-                  <NotificationsActiveOutlinedIcon sx={{ fontSize: "inherit" }}/>
-                </IconButton>
+                <Divider orientation="vertical" style={{ height: 'inherit' }}></Divider>
+                  <Typography variant="h5" sx={{ fontFamily: "digital-7", color: "#000000", fontWeight: 900, my: "auto", ml: 3 }}>Buzzers:</Typography>
+                  <Typography variant="h6" sx={{ fontFamily: "digital-7", color: "#000000", fontWeight: 900, my: "auto", ml: 1 }}>TO:</Typography>
+                  <IconButton size="large" onClick={() => { longBuzzer.play() }}>
+                    <CampaignOutlinedIcon sx={{ fontSize: "inherit" }}/>
+                  </IconButton>
+                  <Typography variant="h6" sx={{ fontFamily: "digital-7", color: "#000000", fontWeight: 900, my: "auto" }}>Sub:</Typography>
+                  <IconButton size="large" onClick={() => { shortBuzzer.play() }}>
+                    <NotificationsActiveOutlinedIcon sx={{ fontSize: "inherit" }}/>
+                  </IconButton>
               </Box>
             </Container>
           </Box>
         </Grid>
         <Grid item lg={4} md={6} xs={12} sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <Box sx={{ width: "99%", height: "100%", display: "flex", border: "solid", borderRadius: 3 }}>
+        <Box sx={{ width: "99%", height: "100%", display: "flex", border: "solid", borderRadius: 2 }}>
             <Container fixed>
-              <h2 style={{ fontSize: "1.75rem" }}>Team Foul and Quarter Setting</h2>
+            <Typography variant="h4" sx={{ fontFamily: "digital-7", color: "#000000", fontWeight: 900, mt: 3 }}>TEAM FOUL AND QUARTER SETTING</Typography>
               <Divider style={{ width:'100%', marginBottom: "1rem"}}></Divider>
-              <Container sx={{ display: "flex", justifyContent: "center"}} >
-                <h3 style={{ fontSize: "1.25rem", marginRight: ".5rem" }}>Light</h3>
-                <TextField disabled fullWidth value={foulLight} type="number" inputProps={{ style: { textAlign: "center" }}} sx={{ marginRight: 1 }}></TextField>
-                <TextField disabled fullWidth value={foulDark} type="number" inputProps={{ style: { textAlign: "center" }}} sx={{ marginRight: 1}}></TextField>
-                <h3 style={{ fontSize: "1.25rem", marginRight: ".5rem" }}>Dark</h3>
+              <Container sx={{ display: "flex", alignItems: "center"}} disableGutters>
+              <Typography variant="h6" sx={{ fontFamily: "digital-7", color: "#000000", fontWeight: 900, pr: .2 }}>{changeCourt ? "DARK" : "LIGHT"}</Typography>
+                <TextField disabled fullWidth value={changeCourt ? foulDark : foulLight} type="number" inputProps={{ sx: { textAlign: "center", fontFamily: "digital-7", fontSize: "2.5rem", p: 0 }}} sx={{ "& .MuiInputBase-input.Mui-disabled": { WebkitTextFillColor: "rgba(0, 0, 0, 0.87)"}, mr: .5,}}></TextField>
+                <TextField disabled fullWidth value={changeCourt ? foulLight : foulDark} type="number" inputProps={{ sx: { textAlign: "center", fontFamily: "digital-7", fontSize: "2.5rem", p: 0 }}} sx={{ "& .MuiInputBase-input.Mui-disabled": { WebkitTextFillColor: "rgba(0, 0, 0, 0.87)"}, ml: .5,}}></TextField>
+                <Typography variant="h6" sx={{ fontFamily: "digital-7", color: "#000000", fontWeight: 900, pl: .3 }}>{changeCourt ? "LIGHT" : "DARK"}</Typography>
               </Container>
-              <Button size="small" variant="outlined" onClick={lightFoulIncrement}>Foul Light</Button>
-              <IconButton size="large" sx={{ marginLeft: -.2 }} onClick={resetLightFoul}>
-                <RestartAltIcon fontSize="inherit"></RestartAltIcon>
-              </IconButton>
-              <IconButton size="large" sx={{ marginLeft: 15.2 }} onClick={resetDarkFoul}>
-                <RestartAltIcon fontSize="inherit"></RestartAltIcon>
-              </IconButton>
-              <Button size="small" variant="contained" sx={{ marginRight: 0 }} onClick={darkFoulIncrement} >Foul Dark</Button>
-              <Divider style={{ width:'100%', marginTop: ".5rem"}}></Divider>
+              <Container disableGutters>
+              {
+                changeCourt ? 
+                <>
+                <Grid container>
+                  <Grid item lg={6} md={6} sm={6} xs={6} sx={{ display: "flex", alignItems: "start"}}>
+                  <Box>
+                  <Button size="small" variant="contained" onClick={darkFoulIncrement} sx={{ marginTop: 2, mr: "auto", my: "auto" }}>Foul Dark</Button>
+                    <IconButton size="large" onClick={resetDarkFoul}>
+                      <RestartAltIcon fontSize="inherit"></RestartAltIcon>
+                    </IconButton>
+                  </Box>
+                  </Grid>
+                  <Grid item lg={6} md={6} sm={6} xs={6} sx={{ display: "flex", alignItems: "end", flexDirection: "row-reverse"}}>
+                    <Button size="small" variant="outlined" onClick={lightFoulIncrement} sx={{ my: "auto"}}>Foul Light</Button>
+                    <IconButton size="large" onClick={resetLightFoul} sx={{ ml: "auto", my: "auto" }}>
+                      <RestartAltIcon fontSize="inherit"></RestartAltIcon>
+                    </IconButton>
+                  </Grid>
+                </Grid>
+                </>
+                :
+                <>
+                <Grid container>
+                  <Grid item lg={6} md={6} sm={6} xs={6} sx={{ display: "flex", alignItems: "start"}}>
+                  <Box>
+                  <Button size="small" variant="outlined" onClick={lightFoulIncrement} sx={{ marginTop: 2, mr: "auto", my: "auto" }}>Foul Light</Button>
+                    <IconButton size="large" onClick={resetLightFoul}>
+                      <RestartAltIcon fontSize="inherit"></RestartAltIcon>
+                    </IconButton>
+                  </Box>
+                  </Grid>
+                  <Grid item lg={6} md={6} sm={6} xs={6} sx={{ display: "flex", alignItems: "end", flexDirection: "row-reverse"}}>
+                    <Button size="small" variant="contained" onClick={darkFoulIncrement} sx={{ my: "auto"}}>Foul Dark</Button>
+                    <IconButton size="large" onClick={resetDarkFoul} sx={{ ml: "auto", my: "auto" }}>
+                      <RestartAltIcon fontSize="inherit"></RestartAltIcon>
+                    </IconButton>
+                  </Grid>
+                </Grid>
+                </>
+              }
+              </Container>
+              <Divider style={{ width:'100%'}}></Divider>
               <Box sx={{ marginTop: 2, display: "flex" }}>
-                <h2 style={{ fontSize: "1.25 rem", height: '50%', marginRight: "5px" }}>Game Quarter</h2>
+                <Typography variant="h5" sx={{ fontFamily: "digital-7", color: "#000000", fontWeight: 900, my: "auto",  mr: 2}}>Game Quarter:</Typography>
                 <TextField label='Quarter' onChange={changeQuarter} value={quarter} type="number" sx={{ width: 75, marginRight: 1 }}></TextField>
               </Box>
             </Container>
