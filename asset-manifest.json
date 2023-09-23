@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/wwcfscoreboard/static/css/main.ccceef20.css",
-    "main.js": "/wwcfscoreboard/static/js/main.c7cf1e0f.js",
+    "main.js": "/wwcfscoreboard/static/js/main.31a7c524.js",
     "static/media/digital-7 (mono).ttf": "/wwcfscoreboard/static/media/digital-7 (mono).ae951a188b593952b384.ttf",
     "static/media/digital-7.ttf": "/wwcfscoreboard/static/media/digital-7.93911ab167c943140756.ttf",
     "static/media/Premier2019-rPv9.ttf": "/wwcfscoreboard/static/media/Premier2019-rPv9.4fd1e79ad06a2ff07838.ttf",
     "index.html": "/wwcfscoreboard/index.html",
     "main.ccceef20.css.map": "/wwcfscoreboard/static/css/main.ccceef20.css.map",
-    "main.c7cf1e0f.js.map": "/wwcfscoreboard/static/js/main.c7cf1e0f.js.map"
+    "main.31a7c524.js.map": "/wwcfscoreboard/static/js/main.31a7c524.js.map"
   },
   "entrypoints": [
     "static/css/main.ccceef20.css",
-    "static/js/main.c7cf1e0f.js"
+    "static/js/main.31a7c524.js"
   ]
 }
