@@ -13,11 +13,15 @@
     src: url('./fonts/Premier2019/Premier2019-rPv9.ttf') format('trutype');
 }
 
+@font-face {
+    font-family: digital-regular;
+    src: url('./fonts/Digital/Digital.otf') format('opentype');
+}
+
 body {
     font-family: "digital-7";
     background-size: cover;
     margin: 0;
-
 }
 
 .button-arrow {

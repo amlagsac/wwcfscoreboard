@@ -1,4 +1,4 @@
-import { Box, ButtonGroup, Button, Container, Divider, Grid, TextField, IconButton, Typography } from "@mui/material";
+import { Box, ButtonGroup, Button, Container, Divider, Grid, TextField, IconButton, Typography, useTheme, useMediaQuery } from "@mui/material";
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 import PauseCircleOutlineIcon from '@mui/icons-material/PauseCircleOutline';
 import HourglassBottomOutlinedIcon from '@mui/icons-material/HourglassBottomOutlined';
@@ -16,8 +16,21 @@ import NotificationsActiveOutlinedIcon from '@mui/icons-material/NotificationsAc
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import './App.css';
+import DataGridLight from "./DataGridLight";
+import DataGridDark from "./DataGridDark";
 
 const App = () => {
+
+  const theme = useTheme();
+  const desktop = useMediaQuery(theme.breakpoints.up("lg"));
+  const tablet = useMediaQuery(theme.breakpoints.up("sm"));
+  const mobile = useMediaQuery(theme.breakpoints.up("xs"));
+
+  const sizes = () => {
+    if (desktop) return "large";
+    if (tablet) return "medium";
+    if (mobile) return "small";
+  };
 
   const shortBuzzer = new Audio(process.env.PUBLIC_URL + "/sounds/SubBuzzer.mp3");
   const longBuzzer = new Audio(process.env.PUBLIC_URL + "/sounds/LongBuzzerSound.mp3");
@@ -450,14 +463,14 @@ const App = () => {
                   <Grid item lg={6} md={6} sm={6} xs={6} sx={{ display: "flex", alignItems: "start"}}>
                   <Box>
                   <Button size="small" variant="contained" onClick={darkTimeoutDecrement} sx={{ marginTop: 2, mr: "auto", my: "auto" }}>Timeout Dark</Button>
-                    <IconButton size="large" onClick={resetDarkTimeout}>
+                    <IconButton size={sizes()} onClick={resetDarkTimeout}>
                       <RestartAltIcon fontSize="inherit"></RestartAltIcon>
                     </IconButton>
                   </Box>
                   </Grid>
                   <Grid item lg={6} md={6} sm={6} xs={6} sx={{ display: "flex", alignItems: "end", flexDirection: "row-reverse"}}>
                     <Button size="small" variant="outlined" onClick={lightTimeoutDecrement} sx={{ my: "auto"}}>Timeout Light</Button>
-                    <IconButton size="large" onClick={resetLightTimeout} sx={{ ml: "auto", my: "auto" }}>
+                    <IconButton size={sizes()} onClick={resetLightTimeout} sx={{ ml: "auto", my: "auto" }}>
                       <RestartAltIcon fontSize="inherit"></RestartAltIcon>
                     </IconButton>
                   </Grid>
@@ -469,14 +482,14 @@ const App = () => {
                   <Grid item lg={6} md={6} sm={6} xs={6} sx={{ display: "flex", alignItems: "start"}}>
                   <Box>
                   <Button size="small" variant="outlined" onClick={lightTimeoutDecrement} sx={{ marginTop: 2, mr: "auto", my: "auto" }}>Timeout Light</Button>
-                    <IconButton size="large" onClick={resetLightTimeout}>
+                    <IconButton size={sizes()} onClick={resetLightTimeout}>
                       <RestartAltIcon fontSize="inherit"></RestartAltIcon>
                     </IconButton>
                   </Box>
                   </Grid>
                   <Grid item lg={6} md={6} sm={6} xs={6} sx={{ display: "flex", alignItems: "end", flexDirection: "row-reverse"}}>
                     <Button size="small" variant="contained" onClick={darkTimeoutDecrement} sx={{ my: "auto"}}>Timeout Dark</Button>
-                    <IconButton size="large" onClick={resetDarkTimeout} sx={{ ml: "auto", my: "auto" }}>
+                    <IconButton size={sizes()} onClick={resetDarkTimeout} sx={{ ml: "auto", my: "auto" }}>
                       <RestartAltIcon fontSize="inherit"></RestartAltIcon>
                     </IconButton>
                   </Grid>
@@ -575,6 +588,16 @@ const App = () => {
               </Box>
             </Container>
           </Box>
+        </Grid>
+        <Grid item lg={4} md={6} xs={12} sx={{ display: "flex", alignItems: "center"}}>
+          <Box sx={{ width: "99%", height: "100%", display: "flex", border: "solid", borderRadius: 2 }}>
+              <DataGridLight />
+          </Box>  
+        </Grid>
+        <Grid item lg={4} md={6} xs={12} sx={{ display: "flex", alignItems: "center"}}>
+          <Box sx={{ width: "99%", height: "100%", display: "flex", border: "solid", borderRadius: 2 }}>
+              <DataGridDark />
+          </Box>  
         </Grid>
       </Grid>
       </Container>
