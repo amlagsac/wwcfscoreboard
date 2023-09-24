@@ -32,6 +32,13 @@ const App = () => {
     if (mobile) return "small";
   };
 
+  const buttonSizes = () => {
+    if (desktop) return "medium";
+    if (tablet) return "medium";
+    if (mobile) return "small";
+  };
+
+
   const shortBuzzer = new Audio(process.env.PUBLIC_URL + "/sounds/SubBuzzer.mp3");
   const longBuzzer = new Audio(process.env.PUBLIC_URL + "/sounds/LongBuzzerSound.mp3");
 
@@ -375,28 +382,28 @@ const App = () => {
                   <>
                   <Grid container>
                   <Grid item lg={6} md={6} sm={6} xs={6} sx={{ display: "flex", alignItems: "start"}}>
-                    <ButtonGroup size={sizes()} color="success" variant="contained" aria-label="outlined button group" sx={{ marginTop: 2, mr: "auto" }}>
+                    <ButtonGroup size={buttonSizes()} color="success" variant="contained" aria-label="outlined button group" sx={{ marginTop: 2, mr: "auto" }}>
                       <Button onClick={plusOnePointDark}>+<LooksOneIcon/></Button>
                       <Button onClick={plusTwoPointDark}>+<LooksTwoIcon/></Button>
                       <Button onClick={plusThreePointDark}>+<Looks3Icon/></Button>
                     </ButtonGroup>
                   </Grid>
                   <Grid item lg={6} md={6} sm={6} xs={6} sx={{ display: "flex", alignItems: "end"}}>
-                    <ButtonGroup size={sizes()} color="success" variant="outlined" aria-label="outlined button group" sx={{ marginTop: 2, ml: "auto"}}>
+                    <ButtonGroup size={buttonSizes()} color="success" variant="outlined" aria-label="outlined button group" sx={{ marginTop: 2, ml: "auto"}}>
                       <Button onClick={plusOnePointLight}>+<LooksOneIcon/></Button>
                       <Button onClick={plusTwoPointLight}>+<LooksTwoIcon/></Button>
                       <Button onClick={plusThreePointLight}>+<Looks3Icon/></Button>
                     </ButtonGroup>
                   </Grid>
                   <Grid item lg={6} md={6} sm={6} xs={6} sx={{ display: "flex", alignItems: "start"}}>
-                    <ButtonGroup size={sizes()} color="error" variant="contained" aria-label="outlined button group" sx={{ marginTop: .5, mr: "auto" }}>
+                    <ButtonGroup size={buttonSizes()} color="error" variant="contained" aria-label="outlined button group" sx={{ marginTop: .5, mr: "auto" }}>
                       <Button onClick={minusOnePointDark}>-<LooksOneIcon/></Button>
                       <Button onClick={minusTwoPointDark}>-<LooksTwoIcon/></Button>
                       <Button onClick={minusThreePointDark}>-<Looks3Icon/></Button>
                     </ButtonGroup>
                   </Grid>
                   <Grid item lg={6} md={6} sm={6} xs={6} sx={{ display: "flex", alignItems: "end"}}>
-                    <ButtonGroup size={sizes()} color="error" variant="outlined" aria-label="outlined button group" sx={{ marginTop: .5, ml: "auto" }}>
+                    <ButtonGroup size={buttonSizes()} color="error" variant="outlined" aria-label="outlined button group" sx={{ marginTop: .5, ml: "auto" }}>
                       <Button onClick={minusOnePointLight}>-<LooksOneIcon/></Button>
                       <Button onClick={minusTwoPointLight}>-<LooksTwoIcon/></Button>
                       <Button onClick={minusThreePointLight}>-<Looks3Icon/></Button>
@@ -408,28 +415,28 @@ const App = () => {
                 <>
                 <Grid container>
                   <Grid item lg={6} md={6} sm={6} xs={6} sx={{ display: "flex", alignItems: "start"}}>
-                    <ButtonGroup size={sizes()} color="success" variant="outlined" aria-label="outlined button group" sx={{ marginTop: 2, mr: "auto"}}>
+                    <ButtonGroup size={buttonSizes()} color="success" variant="outlined" aria-label="outlined button group" sx={{ marginTop: 2, mr: "auto"}}>
                       <Button onClick={plusOnePointLight}>+<LooksOneIcon/></Button>
                       <Button onClick={plusTwoPointLight}>+<LooksTwoIcon/></Button>
                       <Button onClick={plusThreePointLight}>+<Looks3Icon/></Button>
                     </ButtonGroup>
                   </Grid>
                   <Grid item lg={6} md={6} sm={6} xs={6} sx={{ display: "flex", alignItems: "end"}}>
-                    <ButtonGroup size={sizes()} color="success" variant="contained" aria-label="outlined button group" sx={{ marginTop: 2, ml: "auto" }}>
+                    <ButtonGroup size={buttonSizes()} color="success" variant="contained" aria-label="outlined button group" sx={{ marginTop: 2, ml: "auto" }}>
                       <Button onClick={plusOnePointDark}>+<LooksOneIcon/></Button>
                       <Button onClick={plusTwoPointDark}>+<LooksTwoIcon/></Button>
                       <Button onClick={plusThreePointDark}>+<Looks3Icon/></Button>
                     </ButtonGroup>
                   </Grid>
                   <Grid item lg={6} md={6} sm={6} xs={6} sx={{ display: "flex", alignItems: "start"}}>
-                    <ButtonGroup size={sizes()} color="error" variant="outlined" aria-label="outlined button group" sx={{ marginTop: .5, mr: "auto" }}>
+                    <ButtonGroup size={buttonSizes()} color="error" variant="outlined" aria-label="outlined button group" sx={{ marginTop: .5, mr: "auto" }}>
                       <Button onClick={minusOnePointLight}>-<LooksOneIcon/></Button>
                       <Button onClick={minusTwoPointLight}>-<LooksTwoIcon/></Button>
                       <Button onClick={minusThreePointLight}>-<Looks3Icon/></Button>
                     </ButtonGroup>
                   </Grid>
                   <Grid item lg={6} md={6} sm={6} xs={6} sx={{ display: "flex", alignItems: "end"}}>
-                    <ButtonGroup size={sizes()} color="error" variant="contained" aria-label="outlined button group" sx={{ marginTop: .5, ml: "auto" }}>
+                    <ButtonGroup size={buttonSizes()} color="error" variant="contained" aria-label="outlined button group" sx={{ marginTop: .5, ml: "auto" }}>
                       <Button onClick={minusOnePointDark}>-<LooksOneIcon/></Button>
                       <Button onClick={minusTwoPointDark}>-<LooksTwoIcon/></Button>
                       <Button onClick={minusThreePointDark}>-<Looks3Icon/></Button>
